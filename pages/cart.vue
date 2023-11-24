@@ -1,3 +1,4 @@
+
 <script lang="ts" setup>
 import type { Products } from '~/types/products';
 const products = ref<Products[]>([]);
@@ -16,6 +17,9 @@ const removeCart = (id: number) => {
 products.value = products.value.filter((item) => item.id !== id);
 localStorage.setItem("products", JSON.stringify(products.value));
 }
+definePageMeta({
+middleware: ["user-access"]
+});
 </script>
 
 
